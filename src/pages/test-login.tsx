@@ -7,7 +7,7 @@ export default function TestLogin() {
       <button
         onClick={(e) => {
           axios
-            .get('http://localhost:8000/test-login', {
+            .get('http://localhost:8000/test/login', {
               withCredentials: true,
             })
             .then((res) => {
