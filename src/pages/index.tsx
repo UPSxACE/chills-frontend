@@ -1,7 +1,8 @@
 import getMainLayout from '@/utils/get-main-layout';
-import { Box, Button, Typography } from '@mui/material';
+import { Box, Button, SxProps, Typography } from '@mui/material';
 import Head from 'next/head';
 import Image from 'next/image';
+import { CSSProperties } from 'react';
 
 Home.getLayout = (page: any) => getMainLayout(page);
 
@@ -15,46 +16,23 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <Box
-          sx={{
-            height: 'calc(50vh - 48px)',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}
-        >
-          <Box sx={{ position: 'relative', height: '35vh', width: '100%' }}>
+        <Box sx={styles.firstHalfBox}>
+          <Box sx={styles.mascotImageWrapper}>
             <Image
               alt="Chills Mascot"
               src="/logo-v0.webp"
               fill
-              style={{ position: 'absolute', objectFit: 'contain' }}
+              style={styles.mascotImage as CSSProperties}
             />
           </Box>
         </Box>
-        <Box
-          sx={{
-            display: 'flex',
-            justifyContent: 'flex-start',
-            alignItems: 'center',
-            flexDirection: 'column',
-
-            flex: 1,
-            height: 'calc(50vh)',
-          }}
-        >
+        <Box sx={styles.secondHalfBox}>
           <Box sx={{ maxWidth: 500 }}>
             <Typography
               component="h1"
               variant="h4"
               fontFamily="Nunito"
-              sx={{
-                textAlign: 'center',
-                mb: 3,
-                color: 'primary.main',
-                fontWeight: 'bold',
-                px: 4,
-              }}
+              sx={styles.title}
             >
               Embrace a new journey
             </Typography>
@@ -62,7 +40,7 @@ export default function Home() {
               component="p"
               variant="h6"
               fontFamily="Nunito"
-              sx={{ textAlign: 'justify', px: 4 }}
+              sx={styles.description}
             >
               A friendly, fun, active, and very accepting community, where you
               can meet people of all kind, and that is highly shaped by feedback
@@ -77,21 +55,10 @@ export default function Home() {
                 justifyContent: 'center',
               }}
             >
-              <Button
-                variant="contained"
-                sx={{ fontSize: '1.25rem', width: '9rem', fontWeight: 'bold' }}
-              >
+              <Button variant="contained" sx={styles.loginButton}>
                 Login
               </Button>
-              <Button
-                variant="outlined"
-                sx={{
-                  fontSize: '1.25rem',
-                  width: '9rem',
-                  borderWidth: '2px!important',
-                  borderColor: 'primary.main',
-                }}
-              >
+              <Button variant="outlined" sx={styles.registerButton}>
                 Register
               </Button>
             </Box>
@@ -101,3 +68,37 @@ export default function Home() {
     </>
   );
 }
+
+const styles: { [key: string]: SxProps } = {
+  firstHalfBox: {
+    height: 'calc(50vh - 48px)',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  secondHalfBox: {
+    display: 'flex',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    flexDirection: 'column',
+    flex: 1,
+    height: 'calc(50vh)',
+  },
+  mascotImageWrapper: { position: 'relative', height: '35vh', width: '100%' },
+  mascotImage: { position: 'absolute', objectFit: 'contain' },
+  title: {
+    textAlign: 'center',
+    mb: 3,
+    color: 'primary.main',
+    fontWeight: 'bold',
+    px: 4,
+  },
+  description: { textAlign: 'justify', px: 4 },
+  loginButton: { fontSize: '1.25rem', width: '9rem', fontWeight: 'bold' },
+  registerButton: {
+    fontSize: '1.25rem',
+    width: '9rem',
+    borderWidth: '2px!important',
+    borderColor: 'primary.main',
+  },
+};
