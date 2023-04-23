@@ -1,7 +1,9 @@
+import getMainLayout from '@/utils/get-main-layout';
 import { Inter } from 'next/font/google';
 import Head from 'next/head';
 
 const inter = Inter({ subsets: ['latin'] });
+Home.getLayout = (page: any) => getMainLayout(page);
 
 export default function Home() {
   return (
