@@ -1,5 +1,6 @@
 import '@/styles/globals.css';
 import theme from '@/theme';
+import '@fontsource/nunito';
 import { ThemeProvider } from '@mui/material/styles';
 import type { AppProps } from 'next/app';
 //import '@fortawesome/fontawesome-svg-core/styles.css';
