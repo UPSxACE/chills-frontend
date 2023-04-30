@@ -16,51 +16,54 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <Box sx={styles.firstHalfBox}>
-          <Box sx={styles.mascotImageWrapper}>
-            <Image
-              alt="Chills Mascot"
-              src="/logo-v0.webp"
-              fill
-              style={styles.mascotImage as CSSProperties}
-            />
+        <Box sx={styles.landingPageWrapper}>
+          <Box sx={styles.firstHalfBox}>
+            <Box sx={styles.mascotImageWrapper}>
+              <Image
+                alt="Chills Mascot"
+                src="/logo-v0.webp"
+                fill
+                style={styles.mascotImage as CSSProperties}
+                loading="eager"
+              />
+            </Box>
           </Box>
-        </Box>
-        <Box sx={styles.secondHalfBox}>
-          <Box sx={{ maxWidth: 500 }}>
-            <Typography
-              component="h1"
-              variant="h4"
-              fontFamily="Nunito"
-              sx={styles.title}
-            >
-              Embrace a new journey
-            </Typography>
-            <Typography
-              component="p"
-              variant="h6"
-              fontFamily="Nunito"
-              sx={styles.description}
-            >
-              A friendly, fun, active, and very accepting community, where you
-              can meet people of all kind, and that is highly shaped by feedback
-              of its members. This community is ours, and we decide its future
-              together.
-            </Typography>
-            <Box
-              sx={{
-                display: 'flex',
-                mt: 3,
-                gap: 1.5,
-                justifyContent: 'center',
-              }}
-            >
-              <Button variant="contained" sx={styles.loginButton}>
-                Login
-              </Button>
-              <Button variant="outlined" sx={styles.registerButton}>
-                Register
-              </Button>
+          <Box sx={styles.secondHalfBox}>
+            <Box sx={{ maxWidth: 500, paddingBottom: 3 }}>
+              <Typography
+                component="h1"
+                variant="h4"
+                fontFamily="Nunito"
+                sx={styles.title}
+              >
+                Embrace a new journey
+              </Typography>
+              <Typography
+                component="p"
+                variant="h6"
+                fontFamily="Nunito"
+                sx={styles.description}
+              >
+                A friendly, fun, active, and very accepting community, where you
+                can meet people of all kind, and that is highly shaped by
+                feedback of its members. This community is ours, and we decide
+                its future together.
+              </Typography>
+              <Box
+                sx={{
+                  display: 'flex',
+                  mt: 3,
+                  gap: 1.5,
+                  justifyContent: 'center',
+                }}
+              >
+                <Button variant="contained" sx={styles.loginButton}>
+                  Login
+                </Button>
+                <Button variant="outlined" sx={styles.registerButton}>
+                  Register
+                </Button>
+              </Box>
             </Box>
           </Box>
         </Box>
@@ -70,22 +73,37 @@ export default function Home() {
 }
 
 const styles: { [key: string]: SxProps } = {
+  landingPageWrapper: {
+    display: 'flex',
+    minHeight: 'calc(100vh - 3.5rem)',
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'column',
+  },
   firstHalfBox: {
-    height: 'calc(50vh - 48px)',
+    height: 'calc(50vh - 3.5rem)', // 3.5rem from navbar height
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
+    maxWidth: 1400,
   },
   secondHalfBox: {
     display: 'flex',
     justifyContent: 'flex-start',
     alignItems: 'center',
     flexDirection: 'column',
-    flex: 1,
-    height: 'calc(50vh)',
+    maxWidth: 1400,
+    //flex: 1,
+    //height: 'calc(50vh)',
   },
-  mascotImageWrapper: { position: 'relative', height: '35vh', width: '100%' },
-  mascotImage: { position: 'absolute', objectFit: 'contain' },
+  mascotImageWrapper: {
+    position: 'relative',
+    height: 'calc(50vh - 3.5rem - 24px - 24px)', // 3.5 rem from navbar height, 24px to add padding on top and bottom
+    aspectRatio: '835/1781',
+  },
+  mascotImage: {
+    position: 'absolute',
+  },
   title: {
     textAlign: 'center',
     mb: 3,
